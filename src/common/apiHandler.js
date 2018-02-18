@@ -100,9 +100,9 @@ function ApiHandler(baseURL) {
 
   this.getTopMarkets = function(limit, callback) {
     var order = [
-      'XAU', 'XAG', 'BTC', 'ETH', 'LTC',
-      'XRP', 'EUR', 'USD', 'GBP', 'AUD',
-      'NZD', 'USD', 'CAD', 'CHF', 'JPY', 'CNY']
+      'BTC', 'ZDK', 'JUD', 'DSH', 'LTC',
+      'XRP', 'DGB', 'VTC', 'MON', 'SYS',
+      'GRS', 'ETH', 'ETC', 'EXP', 'EMN', 'PPC', 'NMC', 'VIA']
 
     var url = self.url + '/network/top_markets' +
       (limit ? '?limit=' + limit : '')

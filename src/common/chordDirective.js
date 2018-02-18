@@ -8,7 +8,7 @@ function ($window, matrixFactory, rippleName) {
     var height;
     var width;
     var dims = []; // USABLE DIMENSIONS
-    var currencyOrder = ['XAU', 'XAG', 'BTC', 'LTC', 'XRP', 'EUR', 'USD', 'GBP', 'AUD', 'NZD', 'USD', 'CAD', 'CHF', 'JPY', 'CNY'];
+    var currencyOrder = ['BTC', 'ZDK', 'JUD', 'DSH', 'LTC',      'XRP', 'DGB', 'VTC', 'MON', 'SYS',      'GRS', 'ETH', 'ETC', 'EXP', 'EMN', 'PPC', 'NMC', 'VIA'];
     var xrpRates = {
       XRP : 1
     };
@@ -25,7 +25,7 @@ function ($window, matrixFactory, rippleName) {
 
     var exch = (function () {
 
-      var exCurrency = 'USD';
+      var exCurrency = 'ZDK';
       var exRates = {};
       var obj = {};
 
@@ -60,12 +60,12 @@ function ($window, matrixFactory, rippleName) {
     var currencyColor = function (currency, rank) {
       var baseColors = {
         'XRP'     : '#346aa9',
-        'USD'     : [20,150,30],
+        'ZDK'     : [20,150,30],
         'BTC'     : [240,150,50],
-        'EUR'     : [220,210,50],
-        'CNY'     : [180,30,35],
-        'JPY'     : [140,80,170],
-        'CAD'     : [130,100,190],
+        'SYS'     : [220,210,50],
+        'VTC'     : [180,30,35],
+        'MON'     : [140,80,170],
+        'GRS'     : [130,100,190],
         'other'   : [100, 150, 200]
       };
 

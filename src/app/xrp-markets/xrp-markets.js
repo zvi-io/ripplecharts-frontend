@@ -34,10 +34,10 @@ angular.module('ripplecharts.xrp-markets', [
     .range([.5, 1]).clamp(true)
 
   var valueCurrencies = {
-    USD: 'rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B',  // bitstamp
-    EUR: 'rhub8VRN55s94qWKDv6jmDy1pUykJzF3wq', // gatehub
-    JPY: 'r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN', // tokoyo jpy
-    CNY: 'rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y', // ripplefox
+    BTC: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8',  // bitstamp
+    ETH: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8', // gatehub
+    EMN: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8', // tokoyo jpy
+    DGB: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8', // ripplefox
     XRP: ''
   }
 
@@ -265,7 +265,7 @@ angular.module('ripplecharts.xrp-markets', [
 
 
   $scope.marketNames = {
-    rcl: 'XRP Ledger',
+    rcl: 'ZVI Ledger',
     'poloniex.com': 'Poloniex',
     'kraken.com': 'Kraken',
     'btc38.com': 'BTC38',
@@ -290,7 +290,7 @@ angular.module('ripplecharts.xrp-markets', [
   ]
 
   $scope.selectedPeriod = 'day'
-  $scope.selectedCurrency = 'USD'
+  $scope.selectedCurrency = 'ZDK'
 
   $scope.changePeriod = function(period) {
     $scope.selectedPeriod = period

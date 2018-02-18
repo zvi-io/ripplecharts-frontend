@@ -618,18 +618,18 @@ function MarketsCtrl($scope, $state, $location, gateways) {
       $scope.base = store.session.get('base') ||
         store.get('base') ||
         Options.base ||
-        {currency: 'XRP'}
+        {currency: 'ZVI'}
 
       $scope.counter = store.session.get('counter') ||
         store.get('counter') ||
         Options.counter ||
-        {currency: 'USD', issuer: 'rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B'}
+        {currency: 'BTC', issuer: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8'}
     }
 
-    if ($scope.base.currency === 'XRP' &&
-        $scope.counter.currency === 'XRP') {
+    if ($scope.base.currency === 'ZVI' &&
+        $scope.counter.currency === 'ZVI') {
       $scope.counter = Options.counter ||
-        {currency: 'USD', issuer: 'rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B'}
+        {currency: 'BTC', issuer: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8'}
     }
 
     $scope.range = $state.params.range ||

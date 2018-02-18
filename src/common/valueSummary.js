@@ -36,12 +36,9 @@ function ValueSummary(options) {
           (radius + margin.left) + ',' +
           (radius + margin.top) + ')')
 
+//0
   var currencyOrder = [
-    'XAU', 'XAG', 'BTC',
-    'LTC', 'XRP', 'EUR',
-    'USD', 'GBP', 'AUD',
-    'NZD', 'USD', 'CAD',
-    'CHF', 'JPY', 'CNY'
+   'BTC', 'ZDK', 'JUD', 'DSH', 'LTC', 'XRP', 'DGB', 'VTC', 'MON', 'SYS','GRS', 'ETH', 'ETC', 'EXP', 'EMN', 'PPC', 'NMC', 'VIA', 'XMR'
   ]
 
   var sourceLabels = {
@@ -60,12 +57,12 @@ function ValueSummary(options) {
 
   var currencyColors = {
     'XRP': '#346aa9',
-    'USD': [20, 150, 30],
+    'ZDK': [20, 150, 30],
     'BTC': [240, 150, 50],
-    'EUR': [220, 210, 50],
-    'CNY': [180, 30, 35],
-    'JPY': [140, 80, 170],
-    'CAD': [130, 100, 190],
+    'DSH': [220, 210, 50],
+    'SYS': [180, 30, 35],
+    'PPC': [140, 80, 170],
+    'XMR': [130, 100, 190],
     'other': [100, 150, 200]
   }
 

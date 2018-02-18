@@ -29,7 +29,7 @@ angular.module( 'ripplecharts.manage-gateways', [
     Options.base || {currency:"XRP", issuer:""};
 
   $scope.trade = store.session.get('trade') || store.get('trade') ||
-    Options.trade || {currency:"USD", issuer:"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"};
+    Options.trade || {currency:"BTC", issuer:"rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8"};
 
   //Figure out query and load dropdown accordingly
   var query = Object.keys($location.search())[0];

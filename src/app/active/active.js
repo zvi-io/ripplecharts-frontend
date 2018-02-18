@@ -23,7 +23,7 @@ angular.module( 'ripplecharts.activeAccounts', [
 
 .controller( 'ActiveAccountsCtrl', function ActiveAccountsCtrl( $scope, gateways ) {
 
-  var base    = store.session.get('traderBase')    || store.get('traderBase')    || {"currency": "USD", "issuer" : "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"};
+  var base    = store.session.get('traderBase')    || store.get('traderBase')    || {"currency": "BTC", "issuer" : "rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8"};
   var counter = store.session.get('traderCounter') || store.get('traderCounter') || {"currency": "XRP"};
   var period  = store.session.get('traderPeriod')  || store.get('traderPeriod')  || "24h";
   var metric  = store.session.get('traderMetric')  || store.get('traderMetric')  || "volume";

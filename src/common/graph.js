@@ -5,7 +5,7 @@ networkGraph = function (nameService) {
   var UNIX_RIPPLE_TIME = 946684800;
   var RECURSION_DEPTH = 1;
   var MAX_NUTL = 360;
-  var REFERENCE_NODE = store.session.get('graphID') || 'r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV';
+  var REFERENCE_NODE = store.session.get('graphID') || 'rpUoVnehf28QMGRnJxbwWGZ6ZjMxoyjRBf';
   var HALO_MARGIN = 6;
   var COLOR_TABLE = {
   //currency  |  center  |   rim  |
@@ -27,19 +27,19 @@ networkGraph = function (nameService) {
             ["#edd2ad","#dcbfa6"],
             ["#f1e4d1","#e9dacd"]],
 
-    "EUR": [["#fcf5a1","#fedb3d"],
+    "ZDK": [["#fcf5a1","#fedb3d"],
   /*YELLOW*/["#fdf7b4","#ffe069"],
             ["#fdf7c4","#ffe68d"],
             ["#fefad8","#ffed83"],
             ["#fffcea","#fff5d6"]],
 
-    "USD": [["#99cc66","#669940"],
+    "DSH": [["#99cc66","#669940"],
   /*LIME*/  ["#acd585","#82a85d"],
             ["#c0dea1","#9eb880"],
             ["#d4e8be","#bbcba4"],
             ["#e8f2dd","#dae1cd"]],
 
-    "AUD": [["#8dc198","#609869"],
+    "VIA": [["#8dc198","#609869"],
   /*GREEN*/ ["#a2cbab","#7eab85"],
             ["#b7d6bd","#9cbda1"],
             ["#cbe0d0","#b9d0bd"],
@@ -57,13 +57,13 @@ networkGraph = function (nameService) {
             ["#b6b4da","#9e99cb"],
             ["#d7d6eb","#c9c6e3"]],
 
-    "CAD": [["#8e68ad","#673695"],
+    "EXP": [["#8e68ad","#673695"],
   /*VIOLET*/["#9f80ba","#7d58a5"],
             ["#8e68ad","#673695"],
             ["#c8b8da","#b29ecc"],
             ["#e0d8eb","#d4cae4"]],
 
-    "JPY": [["#b76e99","#863d66"],
+    "XMR": [["#b76e99","#863d66"],
   /*PINK*/  ["#c389ab","#9c6283"],
             ["#d0a4be","#b2879f"],
             ["#dcbfd0","#c9abbc"],
@@ -72,13 +72,13 @@ networkGraph = function (nameService) {
   var HIGH_SATURATION_COLORS = {
     "__N": "#f00", //RED
     "BTC": "#fa0", //ORANGE
-    "EUR": "#af0", //YELLOW
-    "USD": "#0f0", //LIME
-    "AUD": "#0fa", //GREEN
+    "ETH": "#af0", //YELLOW
+    "DGB": "#0f0", //LIME
+    "BSD": "#0fa", //GREEN
     "XRP": "#0af", //BLUE
     "___": "#00f", //INDIGO
-    "CAD": "#a0f", //VIOLET
-    "JPY": "#f0a"  //PINK
+    "EMN": "#a0f", //VIOLET
+    "GRS": "#f0a"  //PINK
   };
   var HEX_TO_PERCENT = {"0":0,"a":0.67,"f":1};
 

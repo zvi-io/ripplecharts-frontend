@@ -281,10 +281,10 @@ angular.element(document).ready(function() {
       }
 
       if (angular.isDefined(toState.data.pageTitle)) {
-        $scope.pageTitle = toState.data.pageTitle + ' | XRP Charts'
+        $scope.pageTitle = toState.data.pageTitle + ' | Zuzzim Charts'
 
       } else {
-        $scope.pageTitle = 'XRP Charts'
+        $scope.pageTitle = 'Zuzzim Charts'
       }
     })
 

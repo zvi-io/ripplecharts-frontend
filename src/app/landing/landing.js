@@ -39,17 +39,18 @@ angular.module('ripplecharts.landing', [
   var rateInterval
 
   var valueCurrencies = {
-    USD: 'rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B',  // bitstamp
-    EUR: 'rhub8VRN55s94qWKDv6jmDy1pUykJzF3wq', // gatehub
-    JPY: 'r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN', // tokoyo jpy
-    CNY: 'rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y', // ripplefox
+    ETH: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8',  // bitstamp
+    BTC: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8', // gatehub
+    EMN: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8', // tokoyo jpy
+    BSD: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8', // ripplefox
     XRP: ''
   }
 
   $scope.metrics = {
     totalTradeVolume: {
-      label: 'Total XRP Trade Volume <small>(All Exchanges)</small>',
-      link: '#/xrp-markets'
+      label: '<span style="display: none;">Total XRP Trade Volume <small>(All Exchanges)</small></span>',
+      link: '#/multimarkets'
+/*      link: '#/xrp-markets'*/
     },
     tradeVolumeRCL: {
       label: 'XRP Ledger Trade Volume <small>(All Pairs)<small>',
@@ -72,7 +73,7 @@ angular.module('ripplecharts.landing', [
   }
 
   $scope.currencies = Object.keys(valueCurrencies)
-  $scope.selectedCurrency = 'USD'
+  $scope.selectedCurrency = 'ZDK'
 
 
   $scope.showMetricDetails = function(name) {
@@ -148,7 +149,7 @@ angular.module('ripplecharts.landing', [
 
     function apply() {
       $scope.valueRate = exchangeRates[currency + '.' + issuer]
-      $scope.valueRatePair = 'XRP/' + currency
+      $scope.valueRatePair = 'ZVI/' + currency
       callback()
     }
 
@@ -461,7 +462,7 @@ angular.module('ripplecharts.landing', [
     gateways: gateways
   })
 
-  markets.list(9)
+  markets.list(1)
 
   markets.on('chartClick', function(chart) {
     $state.transitionTo('markets.pair', {

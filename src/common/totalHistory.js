@@ -38,11 +38,33 @@ function TotalHistory(options) {
   var customTo
 
   var issuers = {
-    USD: 'rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B',
-    BTC: 'rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B',
-    CNY: 'rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y',
-    EUR: 'rhub8VRN55s94qWKDv6jmDy1pUykJzF3wq',
-    JPY: 'r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN',
+    BTC: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8',
+    BTG: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8',
+    BCH: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8',
+    IOT: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8',
+    XMR: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8',
+    XLM: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8',
+    EMC: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8',
+    VIA: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8',
+    ETH: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8',
+    EMN: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8',
+    DSH: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8',
+    MAG: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8',
+    NAV: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8',
+    GUP: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8',
+    BSD: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8',
+    XBC: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8',
+    LOG: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8',
+    EXP: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8',
+    ETC: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8',
+    NMC: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8',
+    PPC: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8',
+    LTC: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8',
+    VTC: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8',
+    SYS: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8',
+    MON: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8',
+    GRS: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8',
+    DGB: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8',
     XRP: ''
   }
 
@@ -57,7 +79,7 @@ function TotalHistory(options) {
   var formatNumber = d3.format(',.0f')
   var range = '1m'
   var interval = 'day'
-  var currency = 'USD'
+  var currency = 'BTC'
   var issuer = issuers[currency]
   var legend
   var chart

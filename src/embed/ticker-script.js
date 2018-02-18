@@ -9,32 +9,32 @@
 
 var default_markets = [
   {
-    base: {currency: 'XRP'},
-    counter: {currency: 'CNY', issuer: 'rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y'}
+    counter: {currency: 'BTC', issuer: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8'},
+    base: {currency: 'XRP'}
   },
   {
     base: {currency: 'XRP'},
-    counter: {currency: 'USD', issuer: 'rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B'}
+    counter: {currency: 'ETH', issuer: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8'}
   },
   {
-    base: {currency: 'BTC', issuer: 'rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B'},
-    counter: {currency: 'XRP'}
-  },
-  {
-    base: {currency: 'XRP'},
-    counter: {currency: 'JPY', issuer: 'r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN'}
+    counter: {currency: 'XRP'},
+    base: {currency: 'EMN', issuer: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8'}
   },
   {
     base: {currency: 'XRP'},
-    counter: {currency: 'USD', issuer: 'rhub8VRN55s94qWKDv6jmDy1pUykJzF3wq'}
+    counter: {currency: 'BSD', issuer: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8'}
   },
   {
     base: {currency: 'XRP'},
-    counter: {currency: 'JPY', issuer: 'rB3gZey7VWHYRqJHLoHDEJXJ2pEPNieKiS'}
+    counter: {currency: 'DGB', issuer: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8'}
   },
   {
     base: {currency: 'XRP'},
-    counter: {currency: 'EUR', issuer: 'rhub8VRN55s94qWKDv6jmDy1pUykJzF3wq'}
+    counter: {currency: 'GRS', issuer: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8'}
+  },
+  {
+    base: {currency: 'XRP'},
+    counter: {currency: 'VTC', issuer: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8'}
   }
 ];
 
@@ -68,12 +68,15 @@ if (!TICKER_CSS) {
 var BLANK_PNG = 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=';
 
 // connect to the ripple network;
+//var remote = new ripple.RippleAPI({
+//  server: 'wss://s1.ripple.com:443'
+//});
 var remote = new ripple.RippleAPI({
-  server: 'wss://s1.ripple.com:443'
+  server: 'ws://s-east.zvi.io:7007'
 });
 remote.connect()
 .then(function() {
-  console.log('connected to the ripple network');
+  console.log('connected to the zvi network');
 })
 .catch(function(e) {
   console.log(e.stack);
@@ -286,7 +289,7 @@ function Ticker(base, counter, obj, callback) {
           (base.issuer ? ':' + base.issuer : '') +
           '/' + counter.currency +
           (counter.issuer ? ':' + counter.issuer : '');
-        window.open('https://www.charts.ripple.com/#/' + path, '_blank');
+        window.open('http://charts.zvi.io/#/' + path, '_blank');
       });
 
       self.div.on('mouseover', function() {

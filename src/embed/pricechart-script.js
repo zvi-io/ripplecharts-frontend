@@ -25,7 +25,8 @@
  *
  */
 
-remote = new ripple.RippleAPI({"server":"wss://s1.ripple.com"});
+//remote = new ripple.RippleAPI({"server":"wss://s1.ripple.com"});
+remote = new ripple.RippleAPI({"server":"ws://s-east.zvi.io:7007"});
 
 var PriceChartWidget = function (options) {
   var self = this, div, el, theme;
@@ -103,7 +104,7 @@ var PriceChartWidget = function (options) {
     var params = getParams();
 
     if (!params.base)     params.base     = {currency:"XRP", issuer:""};
-    if (!params.counter)  params.counter  = {currency:"USD", issuer:"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"};
+    if (!params.counter)  params.counter  = {currency:"BTC", issuer:"rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8"};
     if (!params.type)     params.type     = "line";
     if (!params.theme)    params.theme    = "light";
     if (!params.multiple) params.multiple = 1;

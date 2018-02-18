@@ -1,7 +1,7 @@
 angular.module('txfeed', [])
 .directive('txfeed', ['$timeout', '$sce', '$compile', function($timeout, $sce, $compile) {
   var numberFormat = d3.format(',');
-  var currencyOrder = ['XAU', 'XAG', 'BTC', 'LTC', 'XRP', 'EUR', 'USD', 'GBP', 'AUD', 'NZD', 'USD', 'CAD', 'CHF', 'JPY', 'CNY'];
+  var currencyOrder = ['BTC', 'ZDK', 'JUD', 'DSH', 'LTC', 'XRP', 'DGB', 'VTC', 'MON', 'SYS','GRS', 'ETH', 'ETC', 'EXP', 'EMN', 'PPC', 'NMC', 'VIA', 'XMR'];
 
   return {
     restrict: 'AE',

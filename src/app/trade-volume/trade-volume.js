@@ -20,23 +20,23 @@ angular.module( 'ripplecharts.trade-volume', [
   var api = new ApiHandler(API);
   var pairs = [
     {
-      counter : {currency : 'USD', issuer : 'rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B'},
+      counter : {currency : 'BTC', issuer : 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8'},
       base    : {currency:'XRP'}
     },
     {
-      counter : {currency : 'JPY', issuer : 'r94s8px6kSw1uZ1MV98dhSRTvc6VMPoPcN'},
+      counter : {currency : 'ETH', issuer : 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8'},
       base    : {currency:'XRP'}
     },
     {
-      counter : {currency : 'CNY', issuer : 'rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y'},
+      counter : {currency : 'EMN', issuer : 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8'},
       base    : {currency:'XRP'}
     },
     {
-      counter : {currency : 'BTC', issuer : 'rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q'},
+      counter : {currency : 'BSD', issuer : 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8'},
       base    : {currency:'XRP'}
     },
     {
-      counter : {currency : 'EUR', issuer : 'rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q'},
+      counter : {currency : 'DGB', issuer : 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8'},
       base    : {currency:'XRP'}
     }
   ];
