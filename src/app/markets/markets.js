@@ -623,13 +623,13 @@ function MarketsCtrl($scope, $state, $location, gateways) {
       $scope.counter = store.session.get('counter') ||
         store.get('counter') ||
         Options.counter ||
-        {currency: 'BTC', issuer: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8'}
+        {currency: 'ETH', issuer: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8'}
     }
 
     if ($scope.base.currency === 'ZVI' &&
         $scope.counter.currency === 'ZVI') {
       $scope.counter = Options.counter ||
-        {currency: 'BTC', issuer: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8'}
+        {currency: 'ETH', issuer: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8'}
     }
 
     $scope.range = $state.params.range ||
