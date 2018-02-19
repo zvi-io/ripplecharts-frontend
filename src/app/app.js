@@ -281,10 +281,10 @@ angular.element(document).ready(function() {
       }
 
       if (angular.isDefined(toState.data.pageTitle)) {
-        $scope.pageTitle = toState.data.pageTitle + ' | Zuzzim Charts'
+        $scope.pageTitle = toState.data.pageTitle + ' | Zvi.io Charts'
 
       } else {
-        $scope.pageTitle = 'Zuzzim Charts'
+        $scope.pageTitle = 'Zvi.io Charts'
       }
     })
 
