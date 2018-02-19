@@ -5,13 +5,13 @@
       <p>
         This charting site was built by the Rollin Group to provide live and historical data about
         the Zvi Network. This site is open for anyone to use, alter and embed.  The source
-        code is available <a href="https://github.com/ripple/ripplecharts-frontend" target="_blank">here</a>.
+        code is available <a href="https://github.com/zvi-io/ripplecharts-frontend" target="_blank">here</a>.
       </p>
     </div>
     <div class="row stats" style="">
       <div class="stat-group col-md-6">
-        <h5 >
-          <b style="display: none;">Volume Stats (24 hours)</b>
+        <h5 style="display: none;">
+          <b >Volume Stats (24 hours)</b>
           <select class="valueCurrencySelect" ng-model="selectedCurrency"
                   ng-options="currency for currency in currencies"></select>
           <span class="valueRateDisplay" ng-bind="valueRatePair"></span>
@@ -71,7 +71,7 @@
                    src="assets/images/rippleThrobber.png" class="loader"/>
             </div>
           </li>
-          <li>
+          <li style="display: none">
             <label ng-bind-html="metrics.capitalizationXRP.label | trust"></label>
             <div class="stat">
               <sign ng-show="metrics.capitalizationXRP.converted"
@@ -90,7 +90,7 @@
         </ul>
       </div>
     </div>
-    <h5 >Top Markets</h5>
+    <h5 style="display: none;">Top Markets</h5>
     <div id="topMarkets" ></div>
   </div>
 </div>
