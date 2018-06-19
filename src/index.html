@@ -37,15 +37,16 @@
 
     <!-- Super Global Function -->
     <script type="text/javascript">
+        var native_currency = 'ZVI';
         function translateCoin(coin) {
             if(coin === 'XRP'){
-                return 'ZUZ'
+                return native_currency
             } else {
                 return coin
             }
         }
         function translateBack(coin){
-            if(coin === 'ZUZ'){
+            if(coin === native_currency){
                 return 'XRP'
             } else {
                 return coin

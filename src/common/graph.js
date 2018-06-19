@@ -679,14 +679,14 @@ networkGraph = function (nameService) {
    tr.append(td);
 
    if (to||secondAmount) {
-      tr.append('<td style="width:1px;"><span class="bold amount small">'+commas(amount)+'</span>&nbsp;<span class="light small darkgray">'+currency+'</span></td>');
+      tr.append('<td style="width:1px;"><span class="bold amount small">'+commas(amount)+'</span>&nbsp;<span class="light small darkgray">'+translateCoin(currency)+'</span></td>');
       tr.append('<td style="text-align:center; width:20px;"><i class="light small darkgray">');
       if (to) {
         tr.append('<td style="text-align:center; width:20px;"><i class="light small darkgray">to</i></td>');
         tr.append($('<td style="width:1px;"/>').append(clickableAccountSpan(to)));
       } else {
         tr.append('<td style="text-align:center; width:20px;"><i class="light small darkgray">for</i></td>');
-        tr.append('<td style="width:1px;"><span class="bold amount small">'+commas(secondAmount)+'</span>&nbsp;<span class="light small darkgray">'+secondCurrency+'</span></td>');
+        tr.append('<td style="width:1px;"><span class="bold amount small">'+commas(secondAmount)+'</span>&nbsp;<span class="light small darkgray">'+translateCoin(secondCurrency)+'</span></td>');
       }
 
    } else {
@@ -1682,7 +1682,7 @@ function updateInformation(address) {
       '<td class="circlecell"><svg width="22" height="22">'+
         '<circle cx="11" cy="11" r="11" style="fill:'+COLOR_TABLE['XRP'][0][1]+';"></circle>'+
       '</svg></td>'+
-      '<td class="light small mediumgray" style="width:35px;">XRP</td>'+
+      '<td class="light small mediumgray" style="width:35px;">' + translateCoin('XRP') + '</td>'+
       '<td class="bold amount" id="xrpBalance">'+commas(nodes[nodeMap[address]].account.xrpBalance)+'</td>'+
       '<td class="light expander">&nbsp;</td>'+
     '</tr>');
@@ -1712,7 +1712,7 @@ function updateInformation(address) {
         '<td class="circlecell"><svg width="22" height="22">'+
           '<circle cx="11" cy="11" r="11" style="fill:'+COLOR_TABLE[(COLOR_TABLE.hasOwnProperty(cur)?cur:'___')][0][1]+';"></circle>'+
         '</svg></td>'+
-        '<td class="light small mediumgray">'+cur+'</td>'+
+        '<td class="light small mediumgray">'+translateCoin(cur)+'</td>'+
         '<td class="bold amount">'+commas(balances[cur])+'</td>'+
         '<td class="light expander">'+(trustLinesForCur.length ? '<span id="'+cur+'Expander">+</span></td>' : '&nbsp;')+
       '</tr>');
