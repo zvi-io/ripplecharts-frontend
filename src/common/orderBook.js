@@ -394,9 +394,9 @@ var OrderBook = function (options) {
     leftAxis.attr("transform", "translate(" + xScale.range()[0] + ",0)").call(d3.svg.axis().scale(yScale).orient("left").tickFormat(d3.format("s")));
     rightAxis.attr("transform", "translate(" + xScale.range()[1] + ",0)").call(d3.svg.axis().scale(yScale).orient("right").tickFormat(d3.format("s")));
 
-    xTitle.text("Price ("+counterCurrency+")");
-    leftTitle.text(baseCurrency);
-    rightTitle.text(baseCurrency);
+    xTitle.text("Price ("+ translateCoin(counterCurrency) +")");
+    leftTitle.text(translateCoin(baseCurrency));
+    rightTitle.text(translateCoin(baseCurrency));
 
     centerline.transition().duration(duration)
       .attr("transform", "translate("+center+",0)").style("opacity",1);
@@ -421,20 +421,20 @@ var OrderBook = function (options) {
       focus.attr("transform", "translate(" + xScale(d.price) + "," + yScale(d.sum) + ")")
         .style("opacity", 1);
       details.html("<span>Quantity:<b> " + d.displaySize +
-        "</b></span><span>Total:<b> " +d.displaySum + " " + baseCurrency + "</b></span>" +
-        "<span> @ <b>" + d.displayPrice + " " + counterCurrency + "</b></span>")
+        "</b></span><span>Total:<b> " +d.displaySum + " " + translateCoin(baseCurrency) + "</b></span>" +
+        "<span> @ <b>" + d.displayPrice + " " + translateCoin(counterCurrency) + "</b></span>")
         .style("opacity", 1);
     }
   }
 
   function prepareBook () {
-    bidsHead.select(".headerRow th:nth-child(1) span").html(baseCurrency);
-    bidsHead.select(".headerRow th:nth-child(2) span").html(baseCurrency);
-    bidsHead.select(".headerRow th:nth-child(3) span").html(counterCurrency);
+    bidsHead.select(".headerRow th:nth-child(1) span").html(translateCoin(baseCurrency));
+    bidsHead.select(".headerRow th:nth-child(2) span").html(translateCoin(baseCurrency));
+    bidsHead.select(".headerRow th:nth-child(3) span").html(translateCoin(counterCurrency));
 
-    asksHead.select(".headerRow th:nth-child(1) span").html(counterCurrency);
-    asksHead.select(".headerRow th:nth-child(2) span").html(baseCurrency);
-    asksHead.select(".headerRow th:nth-child(3) span").html(baseCurrency);
+    asksHead.select(".headerRow th:nth-child(1) span").html(translateCoin(counterCurrency));
+    asksHead.select(".headerRow th:nth-child(2) span").html(translateCoin(baseCurrency));
+    asksHead.select(".headerRow th:nth-child(3) span").html(translateCoin(baseCurrency));
   }
 
   //redraw the order book below the depth chart

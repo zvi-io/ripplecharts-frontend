@@ -148,7 +148,7 @@ function PriceChart(options) {
       vwap = d.vwap.toPrecision(5)
       volume = d.baseVolume.toFixed(2)
 
-      var baseCurrency = base.currency
+      var baseCurrency = translateCoin(base.currency)
       var chartDetails = div.select('.chartDetails')
       chartDetails.html('<span class="date">' +
         parseDate(d.startTime.local(), chartInterval) +
@@ -356,8 +356,8 @@ function PriceChart(options) {
       candleWidth = 2
     }
 
-    var baseCurrency = base.currency
-    var counterCurrency = counter.currency
+    var baseCurrency = translateCoin(base.currency)
+    var counterCurrency = translateCoin(counter.currency)
 
     gEnter.select('.axis.price').select('text')
       .text('Price (' + counterCurrency + ')')

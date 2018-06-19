@@ -17,7 +17,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-bump');
   grunt.loadNpmTasks('grunt-coffeelint');
   grunt.loadNpmTasks('grunt-recess');
-  grunt.loadNpmTasks('grunt-karma');
+  // grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-ng-annotate');
   grunt.loadNpmTasks('grunt-html2js');
 
@@ -340,20 +340,20 @@ module.exports = function(grunt) {
 
     /**
      * The Karma configurations.
-     */
+
     karma: {
       options: {
         configFile: '<%= build_dir %>/karma-unit.js'
       },
       unit: {
         port: 9101,
-        background: true
+        background: false
       },
       continuous: {
         singleRun: true
       }
     },
-
+     */
     /**
      * The `index` task compiles the `index.html` file as a Grunt template. CSS
      * and JS files co-exist here but they get split apart later.
@@ -418,7 +418,7 @@ module.exports = function(grunt) {
     /**
      * This task compiles the karma template so that changes to its file array
      * don't have to be managed manually.
-     */
+
     karmaconfig: {
       unit: {
         dir: '<%= build_dir %>',
@@ -430,7 +430,7 @@ module.exports = function(grunt) {
         ]
       }
     },
-
+     */
     /**
      * And for rapid development, we have a watch set up that checks to see if
      * any of the files listed below change, and then to execute the listed
@@ -467,6 +467,7 @@ module.exports = function(grunt) {
       /**
        * When our JavaScript source files change, we want to run lint them and
        * run our unit tests.
+       * 'karma:unit:run',
        */
       jssrc: {
         files: [
@@ -474,7 +475,7 @@ module.exports = function(grunt) {
           'deps/*.js'
         ],
         tasks: [
-          'karma:unit:run',
+
           'copy:build_appjs',
           'copy:build_vendorjs',
           'embed:build'
@@ -489,12 +490,13 @@ module.exports = function(grunt) {
       /**
        * When our CoffeeScript source files change, we want to run lint them and
        * run our unit tests.
+       * , 'karma:unit:run'
        */
       coffeesrc: {
         files: [
           '<%= app_files.coffee %>'
         ],
-        tasks: ['coffee:source', 'karma:unit:run', 'copy:build_appjs']
+        tasks: ['coffee:source', 'copy:build_appjs']
       },
 
       /**
@@ -557,12 +559,13 @@ module.exports = function(grunt) {
       /**
        * When a CoffeeScript unit test file changes, we only want to lint it and
        * run the unit tests. We don't want to do any live reloading.
+       *         tasks: ['karma:unit:run'],
        */
       coffeeunit: {
         files: [
           '<%= app_files.coffeeunit %>'
         ],
-        tasks: ['karma:unit:run'],
+
         options: {
           livereload: false
         }
@@ -584,11 +587,12 @@ module.exports = function(grunt) {
    * the `watch` task to `delta` (that's why the configuration var above is
    * `delta`) and then add a new task called `watch` that does a clean build
    * before watching for changes.
+   *  'karma:unit:start'
    */
 
   grunt.renameTask('watch', 'delta');
   grunt.registerTask('watch', ['build', 'delta']);
-  grunt.registerTask('watch', ['build', 'karma:unit:start', 'delta']);
+  grunt.registerTask('watch', ['build', 'delta']);
 
   /**
    * The default task is to build and compile.
@@ -597,13 +601,14 @@ module.exports = function(grunt) {
 
   /**
    * The `build` task gets your app ready to run for development and testing.
+   * , 'karmaconfig'
    */
   grunt.registerTask('build', [
     'clean', 'html2js', 'coffee', 'recess:build',
     'concat:build_css', 'copy:build_app_assets', 'copy:build_vendor_assets',
     'copy:build_vendor_fonts', 'copy:build_appjs', 'copy:build_vendorjs',
     'copy:build_maintenance', 'index:build', 'embed:build_css',
-    'embed:build', 'karmaconfig'
+    'embed:build'
   ]);
 
   /**
@@ -895,7 +900,7 @@ module.exports = function(grunt) {
                     params);
   }
 
-  grunt.registerMultiTask('karmaconfig',
-                          'Process karma config templates',
-                          runKarmaProcess);
+  // grunt.registerMultiTask('karmaconfig',
+  //                         'Process karma config templates',
+  //                         runKarmaProcess);
 };

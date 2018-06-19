@@ -52,8 +52,8 @@ var TradeFeed = function (options) {
     var b = self.base.currency;
     var c = self.counter.currency;
 
-    header.selectAll('.amount').html('Amount <small>'+b+'</small>');
-    header.selectAll('.price').html('Price <small>'+c+'</small>');
+    header.selectAll('.amount').html('Amount <small>'+translateCoin(b)+'</small>');
+    header.selectAll('.price').html('Price <small>'+translateCoin(c)+'</small>');
 
     transactions = [];
     updateTrades();     //reset the last trade list
@@ -174,11 +174,11 @@ var TradeFeed = function (options) {
       valueFilter(low, 5));
     daily.select(".volume").html("<small>VOL:</small> " +
       valueFilter(volume, 8) +
-      "<small>" + base + "</small>");
+      "<small>" + translateCoin(base) + "</small>");
     daily.select(".date").html(moment.utc().format('YYYY-MM-DD') +
       ' <small>(UTC)</small>');
     price.select(".amount").html(valueFilter(close, 5));
-    price.select(".pair").html(base+"/"+counter);
+    price.select(".pair").html(translateCoin(base)+"/"+translateCoin(counter));
   }
 
 

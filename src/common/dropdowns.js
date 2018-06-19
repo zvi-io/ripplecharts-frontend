@@ -150,14 +150,14 @@
 
       }
 
-      // format currnecies for dropdowns
+      // format currencies for dropdowns
       i = currencies.length;
       while (i--) {
         if (!currencies[i].include) {
           currencies.splice(i, 1);
         } else {
           currencies[i] = {
-            text: currencies[i].currency,
+            text: translateCoin(currencies[i].currency),
             value: i,
             currency: currencies[i].currency,
             imageSrc: currencies[i].icon
@@ -247,7 +247,7 @@
         options.enter().append('option')
           .text(function(d) {
             return d.name;
-          });
+          })
 
         options.exit().remove();
 
@@ -295,6 +295,7 @@
       currencySelect.selectAll('option')
         .data(currencies)
         .enter().append('option')
+
         .attr('class', function(d) {
           return d.currency;
         })

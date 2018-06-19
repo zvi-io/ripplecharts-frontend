@@ -35,6 +35,23 @@
     <!-- compiled CSS --><% styles.forEach( function ( file ) { %>
     <link rel="stylesheet" type="text/css" href="<%= file %>" /><% }); %>
 
+    <!-- Super Global Function -->
+    <script type="text/javascript">
+        function translateCoin(coin) {
+            if(coin === 'XRP'){
+                return 'ZUZ'
+            } else {
+                return coin
+            }
+        }
+        function translateBack(coin){
+            if(coin === 'ZUZ'){
+                return 'XRP'
+            } else {
+                return coin
+            }
+        }
+    </script>
     <!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
     <script type="text/javascript" src="<%= file %>"></script><% }); %>
 
