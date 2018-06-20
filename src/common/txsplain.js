@@ -72,12 +72,12 @@ angular.module('txsplain', [])
 
   function displayAmount(amount, isFee) {
     if (isFee) {
-      return '<b>' + renderNumber(Number(amount) / 1000000) + '</b> XRP'
+      return '<b>' + renderNumber(Number(amount) / 1000000) + '</b> ' + translateCoin('XRP')
     } else if (typeof amount === 'string') {
-      return '<b>' + renderNumber(Number(amount) / 1000000) + '</b> XRP'
+      return '<b>' + renderNumber(Number(amount) / 1000000) + '</b> ' + translateCoin('XRP')
     } else {
       return '<b>' + renderNumber(Number(amount.value).toPrecision(8)) +
-        '</b> ' + amount.currency + '.' +
+        '</b> ' + amount.currency + ' from ' +
         '<account>' + amount.issuer + '</account>'
     }
   }
@@ -224,7 +224,7 @@ angular.module('txsplain', [])
           change = finalBalance - previousBalance
 
           var html = '<li>It ' + action + ' a ' +
-            '<b>' + fields.Balance.currency + '</b> ' +
+            '<b>' + translateCoin(fields.Balance.currency) + '</b> ' +
             '<type>RippleState</type> ' +
             'node between <br/>' +
             '<account>' + account + '</account> and ' +
@@ -235,7 +235,7 @@ angular.module('txsplain', [])
               '<b>' + renderNumber(change.toPrecision(12)) +
               '</b> from <b>' + renderNumber(previousBalance) +
               '</b> to <b>' + renderNumber(finalBalance) +
-              '</b> ' + fields.Balance.currency + '</li></ul>'
+              '</b> ' + translateCoin(fields.Balance.currency) + '</li></ul>'
           }
 
 
@@ -285,8 +285,8 @@ angular.module('txsplain', [])
         function renderOfferNode(action, node) {
           var fields = node.FinalFields || node.NewFields
           var html = '<li>It ' + action + ' a ' +
-            '<b>' + (fields.TakerPays.currency || 'XRP') + '/' +
-            (fields.TakerGets.currency || 'XRP') + '</b> ' +
+            '<b>' + translateCoin((fields.TakerPays.currency || 'XRP')) + '/' +
+              translateCoin((fields.TakerGets.currency || 'XRP')) + '</b> ' +
             '<type>Offer</type> ' +
             'node of <account>' + fields.Account + '</account><ul>' +
             '<li>The offer\'s Sequence number is ' + fields.Sequence + '.</li>'
@@ -360,7 +360,7 @@ angular.module('txsplain', [])
                 renderNumber((previousBalance - finalBalance) / 1000000) +
                 '</b> from <b>' + renderNumber(previousBalance / 1000000) +
                 '</b> to <b>' + renderNumber(finalBalance / 1000000) +
-                '</b> XRP </li>'
+                '</b> ' + translateCoin('XRP') + '</li>'
             }
           }
 
@@ -567,9 +567,9 @@ angular.module('txsplain', [])
             ' offered to pay ' +
             '<amount>' + displayAmount(tx.tx.TakerGets) + '</amount>' +
             ' in order to receive ' +
-            '<amount>' + displayAmount(tx.tx.TakerPays) + '</amount>.' +
+            '<amount>' + displayAmount(tx.tx.TakerPays) + '</amount> ' +
             '<br/>The exchange rate for this offer is <amount><b>' +
-            renderNumber(rate.toPrecision(5)) + ' ' + pair + '</b></amount>.'
+            renderNumber(rate.toPrecision(5)) + ' ' + pair.replace(/XRP/gi, native_currency) + '</b></amount>.'
 
           if (tx.tx.OfferSequence) {
             html += '<br/>The transaction will also cancel ' +

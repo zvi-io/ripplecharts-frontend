@@ -1,4 +1,4 @@
-angular.module('txfeed', [])
+angular.module('txfeed', ['ngSanitize'])
 .directive('txfeed', ['$timeout', '$sce', '$compile', function($timeout, $sce, $compile) {
   var numberFormat = d3.format(',');
   var currencyOrder = ['BTC', 'ZDK', 'JUD', 'DSH', 'LTC', 'XRP', 'DGB', 'VTC', 'MON', 'SYS','GRS', 'ETH', 'ETC', 'EXP', 'EMN', 'PPC', 'NMC', 'VIA', 'XMR'];
@@ -10,7 +10,7 @@ angular.module('txfeed', [])
       '<span class="icon"></span>' +
       '<div class="type">{{tx.type}}</div>' +
       '<div class="account">{{tx.account}}</div>' +
-      '<div class="summary" ng-bind-html="tx.summary"></div>' +
+      '<div class="summary" ng-bind-html="tx.summary | translateCoin"></div>' +
       '<div class="result" title="{{tx.result}}" ' +
       'ng-class="{success: tx.result === \'tesSUCCESS\'}">' +
       '{{tx.result === \'tesSUCCESS\' ? \'✓\' : \'x\'}}</div>' +
@@ -122,4 +122,10 @@ angular.module('txfeed', [])
       });
     }
   }
-}]);
+}]).filter('translateCoin', function ($sanitize) {
+    return function (input) {
+        // console.log(input.toString());
+        return $sanitize(input.toString().replace(/XRP/gi, native_currency));
+        // return input
+    };
+});
