@@ -282,7 +282,6 @@
 
         return true;
       });
-
       if (notFound) {
         currencies.push({
           currency: selectedCurrency,

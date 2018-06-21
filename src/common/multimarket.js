@@ -168,8 +168,8 @@ function MiniChart(base, counter, markets, gateways) {
           header.html('<small title="' +
             self.base.issuer + '">' +
             getName(self.base.issuer, self.base.currency) +
-            '</small><span>' + baseCurrency + '/' +
-            counterCurrency + '</span><small title="' +
+            '</small><span>' + translateCoin(baseCurrency) + '/' +
+              translateCoin(counterCurrency) + '</span><small title="' +
             self.counter.issuer + '">' +
             getName(self.counter.issuer, self.counter.currency) +
             '</small>');
@@ -374,7 +374,7 @@ function MiniChart(base, counter, markets, gateways) {
     change.html((pct > 0 ? ' + ' : '') + amountToHuman(pct) + '%')
       .style(changeStyle);
     volume.html('<label>V:</label> ' + vol +
-                '<small>' + baseCurrency + '</small>');
+                '<small>' + translateCoin(baseCurrency) + '</small>');
 
     // show the chart and details
     details.selectAll('td').style('opacity', 1);
@@ -567,6 +567,7 @@ function MiniChart(base, counter, markets, gateways) {
 
   dropdownA = ripple.currencyDropdown(gateways, true, markets.options.fixed)
     .selected(self.base);
+
 
   dropdownA.on('change', function(d) {
     self.base = d;
