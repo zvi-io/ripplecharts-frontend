@@ -73,6 +73,12 @@ angular.module('ripplecharts.landing', [
   }
 
   $scope.currencies = Object.keys(valueCurrencies)
+  // Replace XRP with native currency
+  var index = $scope.currencies.indexOf("XRP");
+  if (index !== -1) {
+      $scope.currencies[index] = native_currency;
+  }
+
   $scope.selectedCurrency = 'ZDK'
 
 
