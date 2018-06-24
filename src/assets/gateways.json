@@ -4,7 +4,7 @@
         "startDate": "2013-02-22",
         "accounts": [{
             "address": "rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8",
-            "currencies": ["BTC", "BTG", "BCH", "IOT", "ZDK", "JUD", "XMR", "XLM", "EMC", "VIA", "ETH", "EMN", "DSH", "MAG", "NAV", "GUP", "BSD", "XBC", "LOG", "EXP", "ETC", "NMC", "PPC", "LTC", "VTC", "SYS", "MON", "GRS", "DGB" ],
+            "currencies": ["XIM", "XSD", "BTC", "BTG", "BCH", "IOT", "ZDK", "JUD", "XMR", "XLM", "EMC", "VIA", "ETH", "EMN", "DSH", "MAG", "NAV", "GUP", "BSD", "XBC", "LOG", "EXP", "ETC", "NMC", "PPC", "LTC", "VTC", "SYS", "MON", "GRS", "DGB" ],
             "hotwallets": ["rrpNnNLKrartuEqfJGpqyDwPj1AFPg9vn1"]
             }]
     },

@@ -38,7 +38,9 @@ function TotalHistory(options) {
   var customTo
 
   var issuers = {
-    BTC: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8',
+      XIM: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8',
+      XSD: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8',
+      BTC: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8',
     BTG: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8',
     BCH: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8',
     IOT: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8',

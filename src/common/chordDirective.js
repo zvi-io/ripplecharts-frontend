@@ -8,7 +8,7 @@ function ($window, matrixFactory, rippleName) {
     var height;
     var width;
     var dims = []; // USABLE DIMENSIONS
-    var currencyOrder = ['BTC', 'ZDK', 'JUD', 'DSH', 'LTC',      'XRP', 'DGB', 'VTC', 'MON', 'SYS',      'GRS', 'ETH', 'ETC', 'EXP', 'EMN', 'PPC', 'NMC', 'VIA'];
+    var currencyOrder = ['BCH', 'XIM', 'BTC', 'ZDK', 'XSD', 'JUD', 'DSH', 'LTC',      'DGB', 'VTC', 'MON', 'SYS',      'GRS', 'ETH', 'ETC', 'EXP', 'EMN', 'PPC', 'NMC', 'VIA'];
     var xrpRates = {
       XRP : 1
     };
@@ -25,7 +25,7 @@ function ($window, matrixFactory, rippleName) {
 
     var exch = (function () {
 
-      var exCurrency = 'ZDK';
+      var exCurrency = 'XSD';
       var exRates = {};
       var obj = {};
 

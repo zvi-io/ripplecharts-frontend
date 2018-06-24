@@ -100,7 +100,8 @@ function ApiHandler(baseURL) {
 
   this.getTopMarkets = function(limit, callback) {
     var order = [
-      'BTC', 'ZDK', 'JUD', 'DSH', 'LTC',
+        'BCH', 'XSD', 'XIM',
+        'BTC', 'ZDK', 'JUD', 'DSH', 'LTC',
       'XRP', 'DGB', 'VTC', 'MON', 'SYS',
       'GRS', 'ETH', 'ETC', 'EXP', 'EMN', 'PPC', 'NMC', 'VIA']
 
@@ -156,9 +157,9 @@ function ApiHandler(baseURL) {
   this.offersExercised = function(params, load, error) {
 
     var url = self.url + '/exchanges/'
-    var base = params.base.currency +
+    var base = translateBack(params.base.currency) +
       (params.base.issuer ? '+' + params.base.issuer : '')
-    var counter = params.counter.currency +
+    var counter = translateBack(params.counter.currency) +
       (params.counter.issuer ? '+' + params.counter.issuer : '')
     var limit = params.timeIncrement === 'all' ?
         '' : 'limit=' + (params.limit || 1000)

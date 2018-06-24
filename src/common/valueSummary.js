@@ -38,7 +38,7 @@ function ValueSummary(options) {
 
 //0
   var currencyOrder = [
-   'BTC', 'ZDK', 'JUD', 'DSH', 'LTC', 'XRP', 'DGB', 'VTC', 'MON', 'SYS','GRS', 'ETH', 'ETC', 'EXP', 'EMN', 'PPC', 'NMC', 'VIA', 'XMR'
+   'XIM', 'XSD', 'BTC', 'ZDK', 'JUD', 'DSH', 'LTC', 'XRP', 'DGB', 'VTC', 'MON', 'SYS', 'GRS', 'ETH', 'ETC', 'EXP', 'EMN', 'PPC', 'NMC', 'VIA', 'XMR'
   ]
 
   var sourceLabels = {

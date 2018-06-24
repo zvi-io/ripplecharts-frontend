@@ -62,7 +62,7 @@ function MiniChart(base, counter, markets, gateways) {
 
   // get issuer name
   function getName(address, currency) {
-    if (currency === 'XRP') {
+    if (currency === 'XRP' || currency === translateCoin('XRP')) {
       return '';
     }
 
@@ -146,8 +146,8 @@ function MiniChart(base, counter, markets, gateways) {
         d3.event.stopPropagation();
         flipping = true;
 
-        dropdownA.selected(self.counter);
-        dropdownB.selected(self.base);
+        dropdownA.selected(translateBack(self.counter));
+        dropdownB.selected(translateCoin(self.base));
         dropdowns.selectAll('div').remove();
 
         dropdowns.append('div')
@@ -161,6 +161,9 @@ function MiniChart(base, counter, markets, gateways) {
           .call(dropdownB);
 
         self.load();
+
+        dropdowns["0"]["0"].childNodes["0"].firstChild["0"].text = translateCoin(dropdowns["0"]["0"].childNodes["0"].firstChild["0"].text);
+        dropdowns["0"]["0"].childNodes["1"].firstChild["0"].text = translateCoin(dropdowns["0"]["0"].childNodes["1"].firstChild["0"].text);
 
         flipping = false;
 
@@ -491,7 +494,7 @@ function MiniChart(base, counter, markets, gateways) {
 
     if (!self.base || !self.counter ||
       (self.base.currency === self.counter.currency &&
-      self.counter.currency === 'XRP')) {
+          (self.counter.currency === 'XRP' || self.counter.currency === translateCoin('XRP')))) {
       setStatus('Select a currency pair.');
       return;
     }
@@ -566,7 +569,7 @@ function MiniChart(base, counter, markets, gateways) {
     .attr('src', 'assets/images/rippleThrobber.png');
 
   dropdownA = ripple.currencyDropdown(gateways, true, markets.options.fixed)
-    .selected(self.base);
+    .selected(translateBack(self.base));
 
 
   dropdownA.on('change', function(d) {
@@ -577,7 +580,7 @@ function MiniChart(base, counter, markets, gateways) {
   });
 
   dropdownB = ripple.currencyDropdown(gateways, true, markets.options.fixed)
-    .selected(self.counter);
+    .selected(translateBack(self.counter));
 
   dropdownB.on('change', function(d) {
     self.counter = d;
@@ -611,7 +614,10 @@ function MiniChart(base, counter, markets, gateways) {
       '</small>');
   }
 
-  status = self.div.append('h4').attr('class', 'status');
+    dropdowns["0"]["0"].childNodes["0"].firstChild["0"].text = translateCoin(dropdowns["0"]["0"].childNodes["0"].firstChild["0"].text);
+    dropdowns["0"]["0"].childNodes["1"].firstChild["0"].text = translateCoin(dropdowns["0"]["0"].childNodes["1"].firstChild["0"].text);
+
+    status = self.div.append('h4').attr('class', 'status');
 
   if (markets.options.clickable) {
     dropdowns.on('click', function() {
@@ -675,7 +681,7 @@ function MultiMarket(options) {
       .attr('class', 'add')
       .text('+')
       .on('click', function() {
-        self.addChart({currency: 'XRP'}, {currency: 'XRP'});
+        self.addChart({currency: translateCoin('XRP')}, {currency: translateCoin('XRP')});
       });
 
     resizeButton();
@@ -702,8 +708,11 @@ function MultiMarket(options) {
       for (var i = 0; i < self.charts.length; i++) {
         if (!self.charts[i].base) {
           continue;
-        } else if (self.charts[i].base.currency === 'XRP' &&
-          self.charts[i].counter.currency === 'XRP') {
+        } else if ((self.charts[i].base.currency === 'XRP' &&
+          self.charts[i].counter.currency === 'XRP'  ||  (
+                self.charts[i].base.currency === translateCoin('XRP') &&
+                self.charts[i].counter.currency === translateCoin('XRP')
+            ))) {
           continue;
         }
 

@@ -8,3 +8,4 @@ node_modules/
 vendor/
 src/config.js
 eslintrc
+.idea

@@ -77,8 +77,10 @@
         var disable = false;
         var isFound = false;
 
+         selected =  translateBack(selected);
+
         issuers = gateways.getIssuers(selected);
-        if (selected === 'XRP' || issuers.length === 0) {
+        if (selected === 'XRP' || selected === translateCoin('XRP') ||  issuers.length === 0) {
           issuers = [{}];
           disable = true;
         }
@@ -107,6 +109,7 @@
         // issuer is not in the list for this currency
         if (selected === select.currency &&
             selected !== 'XRP' &&
+            selected !== translateCoin('XRP') &&
             !isFound) {
           disable = false;
           issuers.push({
@@ -150,6 +153,7 @@
 
       }
 
+
       // format currencies for dropdowns
       i = currencies.length;
       while (i--) {
@@ -157,7 +161,7 @@
           currencies.splice(i, 1);
         } else {
           currencies[i] = {
-            text: translateCoin(currencies[i].currency),
+            text: currencies[i].currency,
             value: i,
             currency: currencies[i].currency,
             imageSrc: currencies[i].icon
@@ -228,7 +232,9 @@
         var currency = currencySelect.node().value;
         var list = [];
 
-        if (currency !== 'XRP') {
+        currency = translateBack(currency);
+
+        if (currency !== 'XRP' ) {
           list = gateways.getIssuers(currency, isFixed);
 
           if (list.every(function(d) {
@@ -251,7 +257,7 @@
 
         options.exit().remove();
 
-        if (currency === 'XRP') {
+        if (currency === 'XRP' ) {
           gatewaySelect.attr('disabled', 'true');
         } else {
           gatewaySelect.attr('disabled', null);
@@ -271,7 +277,7 @@
         .attr('class', 'currency')
         .on('change', changeCurrency);
       selectedCurrency = select ? select.currency : null;
-      gatewaySelect = selection.append('select')
+          gatewaySelect = selection.append('select')
         .attr('class', 'gateway')
         .on('change', changeGateway);
 
@@ -318,7 +324,7 @@
 
     dropdown.selected = function(d) {
       if (d) {
-        select = d;
+        select = translateBack(d);
         return dropdown;
       }
 
