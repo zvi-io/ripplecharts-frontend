@@ -161,7 +161,7 @@
           currencies.splice(i, 1);
         } else {
           currencies[i] = {
-            text: currencies[i].currency,
+            text: translateCoin(currencies[i].currency),
             value: i,
             currency: currencies[i].currency,
             imageSrc: currencies[i].icon
@@ -290,7 +290,7 @@
       });
       if (notFound) {
         currencies.push({
-          currency: selectedCurrency,
+          currency: translateCoin(selectedCurrency),
           custom: true,
           icon: API + '/currencies/' + selectedCurrency + '.svg',
           included: false
@@ -308,7 +308,7 @@
           return selectedCurrency && d.currency === selectedCurrency;
         })
         .text(function(d) {
-          return d.currency;
+          return translateCoin(d.currency);
         });
 
       changeCurrency();

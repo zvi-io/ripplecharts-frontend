@@ -40,14 +40,18 @@
         var native_currency = 'ZVI';
         function translateCoin(coin) {
             if(coin === 'XRP'){
-                return native_currency
+                return native_currency;
+            } else if(coin === 'XSD'){
+                return 'XSDR';
             } else {
-                return coin
+                return coin;
             }
         }
         function translateBack(coin){
             if(coin === native_currency){
                 return 'XRP'
+            } else if(coin === 'XSDR'){
+                return 'XSD';
             } else {
                 return coin
             }

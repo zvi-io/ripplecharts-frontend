@@ -388,7 +388,7 @@ function MiniChart(base, counter, markets, gateways) {
   function resizeChart() {
     var old = width;
     width = parseInt(self.div.style('width'), 10) -
-      margin.left - margin.right;
+      margin.left - margin.right ;
     height = width / 2 > 150 ? width / 2 : 150;
 
     if (!width) {
