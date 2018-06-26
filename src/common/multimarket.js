@@ -607,8 +607,8 @@ function MiniChart(base, counter, markets, gateways) {
     header.html('<small title="' +
       self.base.issuer + '">' +
       getName(self.base.issuer, self.base.currency) +
-      '</small><span>' + baseCurrency + '/' +
-      counterCurrency + '</span><small title="' +
+      '</small><span>' + translateCoin(baseCurrency) + '/' +
+        translateCoin(counterCurrency) + '</span><small title="' +
       self.counter.issuer + '">' +
       getName(self.counter.issuer, self.counter.currency) +
       '</small>');

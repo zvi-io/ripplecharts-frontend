@@ -468,7 +468,7 @@ angular.module('ripplecharts.landing', [
             gateways: gateways
         })
 
-        markets.list(1)
+        markets.list(store.get('multimarkets'))
 
         markets.on('chartClick', function (chart) {
             $state.transitionTo('markets.pair', {
