@@ -9,3 +9,4 @@ vendor/
 src/config.js
 eslintrc
 .idea
+package-lock.json

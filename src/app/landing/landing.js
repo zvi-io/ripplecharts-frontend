@@ -72,6 +72,7 @@ angular.module('ripplecharts.landing', [
             $scope.metrics[key].key = key
         }
 
+        // TODO: this needs to 4 letter currency support
         $scope.currencies = Object.keys(valueCurrencies)
         // Replace XRP with native currency
         var index = $scope.currencies.indexOf("XRP");
