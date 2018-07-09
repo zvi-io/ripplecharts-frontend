@@ -175,6 +175,7 @@ angular.element(document).ready(function() {
   angular.module('ripplecharts', [
     'templates-app',
     'templates-common',
+    'ripplecharts.translate',
     'ripplecharts.landing',
     'ripplecharts.markets',
     'ripplecharts.manage-currencies',
@@ -225,7 +226,6 @@ angular.element(document).ready(function() {
     }
   })
   .controller('AppCtrl', function AppCtrl($scope, gateways) {
-
     var last
 
     function checkLast() {

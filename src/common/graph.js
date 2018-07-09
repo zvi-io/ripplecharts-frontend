@@ -1,4 +1,4 @@
-networkGraph = function (nameService) {
+networkGraph = function (nameService, translateCoin, translateBack) {
   var api = new ApiHandler(API);
 
   // CONSTANTS

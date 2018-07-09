@@ -1,7 +1,7 @@
 /* eslint no-unused-vars: 0 */
 'use strict'
 
-function ValueSummary(options) {
+function  ValueSummary(options) {
 
   var commas = d3.format(',.2f')
   var outer = options.id ?

@@ -1,7 +1,8 @@
 angular.module( 'ripplecharts.graph', [
   'ui.state',
   'ui.bootstrap',
-  'rippleName'
+  'rippleName',
+  'ripplecharts.translate'
 ])
 
 .config(function config( $stateProvider ) {
@@ -27,13 +28,13 @@ angular.module( 'ripplecharts.graph', [
   });
 })
 
-.controller( 'GraphCtrl', function GraphCtrl( $scope, $state, $location, rippleName) {
+.controller( 'GraphCtrl', function GraphCtrl( $scope, $state, $location, rippleName, translateCoin, translateBack) {
   if ($state.params.id) {
     store.session.set('graphID', $state.params.id);
     //$location.path("/graph").replace();
   }
 
-  var graph = new networkGraph(rippleName);
+  var graph = new networkGraph(rippleName, translateCoin, translateBack);
   //stop the listeners when leaving page
   $scope.$on("$destroy", function(){
     graph.suspend();

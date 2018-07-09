@@ -2,7 +2,7 @@
 
 (function() {
 
-  ripple.currencyDropdown = function(gateways, old, fixed) {
+  ripple.currencyDropdown = function(translateCoin, translateBack, gateways, old, fixed) {
     var event = d3.dispatch('change');
     var select;
     var loaded = false;

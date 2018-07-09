@@ -37,25 +37,25 @@
 
     <!-- Super Global Function -->
     <script type="text/javascript">
-        var native_currency = 'ZVI';
-        function translateCoin(coin) {
-            if(coin === 'XRP'){
-                return native_currency;
-            } else if(coin === 'XSD'){
-                return 'XSDR';
-            } else {
-                return coin;
-            }
-        }
-        function translateBack(coin){
-            if(coin === native_currency){
-                return 'XRP'
-            } else if(coin === 'XSDR'){
-                return 'XSD';
-            } else {
-                return coin
-            }
-        }
+        // var native_currency = 'ZVI';
+        // function translateCoin(coin) {
+        //     if(coin === 'XRP'){
+        //         return native_currency;
+        //     } else if(coin === 'XSD'){
+        //         return 'XSDR';
+        //     } else {
+        //         return coin;
+        //     }
+        // }
+        // function translateBack(coin){
+        //     if(coin === native_currency){
+        //         return 'XRP'
+        //     } else if(coin === 'XSDR'){
+        //         return 'XSD';
+        //     } else {
+        //         return coin
+        //     }
+        // }
     </script>
     <!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
     <script type="text/javascript" src="<%= file %>"></script><% }); %>

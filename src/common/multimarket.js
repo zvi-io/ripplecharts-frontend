@@ -4,7 +4,7 @@
 
 'use strict';
 
-function MiniChart(base, counter, markets, gateways) {
+function MiniChart(base, counter, markets, gateways, translateCoin, translateBack) {
 
   var self = this;
   var header;
@@ -568,7 +568,7 @@ function MiniChart(base, counter, markets, gateways) {
     .attr('class', 'loader')
     .attr('src', 'assets/images/rippleThrobber.png');
 
-  dropdownA = ripple.currencyDropdown(gateways, true, markets.options.fixed)
+  dropdownA = ripple.currencyDropdown(translateCoin, translateBack, gateways, true, markets.options.fixed)
     .selected(translateBack(self.base));
 
 
@@ -579,7 +579,7 @@ function MiniChart(base, counter, markets, gateways) {
     }
   });
 
-  dropdownB = ripple.currencyDropdown(gateways, true, markets.options.fixed)
+  dropdownB = ripple.currencyDropdown(translateCoin, translateBack, gateways, true, markets.options.fixed)
     .selected(translateBack(self.counter));
 
   dropdownB.on('change', function(d) {
@@ -658,6 +658,8 @@ function MultiMarket(options) {
   var self = this;
   var add;
   var interval;
+  var translateCoin = options.translateCoin;
+  var translateBack = options.translateBack;
 
   self.charts = [];
   self.el = d3.select('#' + options.id).attr('class', 'multiMarket');
@@ -690,7 +692,7 @@ function MultiMarket(options) {
 
   // new chart from list initialization or add chart button click
   this.addChart = function(base, counter) {
-    return new MiniChart(base, counter, self, options.gateways);
+    return new MiniChart(base, counter, self, options.gateways, translateCoin, translateBack);
   };
 
   // remove chart from list initialization or remove button click

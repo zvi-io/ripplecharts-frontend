@@ -12,8 +12,8 @@
       <div class="stat-group col-md-6">
         <h5>
           <b style="display: none;">Volume Stats (24 hours)</b>
-          <select class="valueCurrencySelect" ng-model="selectedCurrency"
-                  ng-options="currency for currency in currencies"></select>
+          <select  ng-init="selectedCurrency = 'XSDR'" class="valueCurrencySelect" ng-model="selectedCurrency"
+                  ng-options="currency for currency in currencies | translateCoinsFilter"></select>
           <span class="valueRateDisplay" ng-bind="valueRatePair"></span>
           <span class="valueRateDisplay"
                 ng-show="selectedCurrency !== 'XRP'"

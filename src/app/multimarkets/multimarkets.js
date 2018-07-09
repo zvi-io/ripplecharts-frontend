@@ -1,6 +1,7 @@
 angular.module( 'ripplecharts.multimarkets', [
   'ui.state',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'ripplecharts.translate'
 ])
 
 .config(function config( $stateProvider ) {
@@ -21,7 +22,7 @@ angular.module( 'ripplecharts.multimarkets', [
   });
 })
 
-.controller( 'MultimarketsCtrl', function MultimarketsCtrl($scope, $state, $location, gateways) {
+.controller( 'MultimarketsCtrl', function MultimarketsCtrl($scope, $state, $location, gateways, translateCoin, translateBack) {
 
   $scope.markets  = store.session.get('multimarkets') ||
     store.get('multimarkets');
@@ -36,7 +37,9 @@ angular.module( 'ripplecharts.multimarkets', [
     updateInterval : 60, //5 minutes
     clickable      : true,
     gateways       : gateways,
-    fixed          : false
+    fixed          : false,
+    translateCoin: translateCoin,
+    translateBack: translateBack
   });
 
 

@@ -1,6 +1,8 @@
 var OrderBook = function (options) {
   var self    = this, asks, bids, isLoading;
   self.offers = { };
+  var translateCoin = options.translateCoin;
+  var translateBack = options.translateBack;
 
   var r      = options.remote;
   var wrap   = options.chartID ? d3.select("#"+options.chartID) : d3.select("body").append("div");

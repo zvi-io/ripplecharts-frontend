@@ -1,4 +1,4 @@
-angular.module('txfeed', ['ngSanitize'])
+angular.module('txfeed', ['ngSanitize', 'ripplecharts.translate'])
 .directive('txfeed', ['$timeout', '$sce', '$compile', function($timeout, $sce, $compile) {
   var numberFormat = d3.format(',');
   var currencyOrder = ['BCH', 'XIM', 'XSD', 'BTC', 'ZDK', 'JUD', 'DSH', 'LTC', 'XRP', 'DGB', 'VTC', 'MON', 'SYS','GRS', 'ETH', 'ETC', 'EXP', 'EMN', 'PPC', 'NMC', 'VIA', 'XMR'];
@@ -122,10 +122,10 @@ angular.module('txfeed', ['ngSanitize'])
       });
     }
   }
-}]).filter('translateCoin', function ($sanitize) {
+}]).filter('translateCoin', function ($sanitize, translateCoin) {
     return function (input) {
         // console.log(input.toString());
-        return $sanitize(input.toString().replace(/XRP/gi, native_currency));
+        return $sanitize(translateCoin(input.toString()));
         // return input
     };
 });

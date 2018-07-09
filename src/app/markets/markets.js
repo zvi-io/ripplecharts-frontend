@@ -1,6 +1,6 @@
 'use strict'
 
-function MarketsCtrl($scope, $state, $location, gateways) {
+function MarketsCtrl($scope, $state, $location, gateways, translateCoin, translateBack) {
 
     /**
      * getStartDate
@@ -143,7 +143,9 @@ function MarketsCtrl($scope, $state, $location, gateways) {
         url: API,
         type: $scope.chartType,
         live: true,
-        resize: true
+        resize: true,
+        translateCoin: translateCoin,
+        translateBack: translateBack
     })
 
     var book = new OrderBook({
@@ -151,6 +153,8 @@ function MarketsCtrl($scope, $state, $location, gateways) {
         tableID: 'bookTables',
         remote: remote,
         resize: true,
+        translateCoin: translateCoin,
+        translateBack: translateBack,
         emit: function (type, data) {
             if (type === 'spread') {
                 document.title = data.bid + '/' +
@@ -164,7 +168,9 @@ function MarketsCtrl($scope, $state, $location, gateways) {
     // set up trades feed
     var tradeFeed = new TradeFeed({
         id: 'tradeFeed',
-        url: API
+        url: API,
+        translateCoin: translateCoin,
+        translateBack: translateBack
     })
 
     /**
@@ -251,13 +257,13 @@ function MarketsCtrl($scope, $state, $location, gateways) {
      */
 
     function loadDropdowns() {
-        dropdownA = ripple.currencyDropdown(gateways)
+        dropdownA = ripple.currencyDropdown(translateCoin, translateBack, gateways)
             .selected($scope.base)
             .on('change', function (d) {
                 updateScopeAndStore('base', d)
             })
 
-        dropdownB = ripple.currencyDropdown(gateways)
+        dropdownB = ripple.currencyDropdown(translateCoin, translateBack, gateways)
             .selected($scope.counter)
             .on('change', function (d) {
                 updateScopeAndStore('counter', d)
@@ -800,7 +806,8 @@ function MarketsCtrl($scope, $state, $location, gateways) {
 angular.module('ripplecharts.markets', [
     'ui.state',
     'ui.bootstrap',
-    'ui.route'
+    'ui.route',
+    'ripplecharts.translate'
 ])
     .config(function config($stateProvider) {
         $stateProvider

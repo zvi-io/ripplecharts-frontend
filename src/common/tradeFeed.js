@@ -1,6 +1,8 @@
 var TradeFeed = function (options) {
   var self       = this,
     apiHandler   = new ApiHandler(options.url),
+    translateCoin = options.translateCoin,
+    translateBack = options.translateBack,
     div          = d3.select('#'+options.id).attr("class","tradeFeed"),
     transactions = [],
     listener, dailyTimer, high, low, close, volume;

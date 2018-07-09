@@ -1,7 +1,7 @@
 'use strict'
 
-angular.module('txsplain', [])
-.directive('txsplain', ['$http', 'rippleName', function($http, rippleName) {
+angular.module('txsplain', ['ripplecharts.translate'])
+.directive('txsplain', ['$http', 'rippleName', 'translateCoin', 'translateBack', function($http, rippleName, translateCoin, translateBack) {
   var commas = d3.format(',')
   var currencyOrder = [
     'BCH', 'XIM', 'XSD', 'BTC', 'ZDK', 'JUD', 'DSH', 'LTC', 'XRP', 'DGB', 'VTC', 'MON', 'SYS','GRS', 'ETH', 'ETC', 'EXP', 'EMN', 'PPC', 'NMC', 'VIA', 'XMR'
@@ -77,7 +77,7 @@ angular.module('txsplain', [])
       return '<b>' + renderNumber(Number(amount) / 1000000) + '</b> ' + translateCoin('XRP')
     } else {
       return '<b>' + renderNumber(Number(amount.value).toPrecision(8)) +
-        '</b> ' + amount.currency + ' from ' +
+        '</b> ' + translateCoin(amount.currency) + ' from ' +
         '<account>' + amount.issuer + '</account>'
     }
   }
@@ -263,7 +263,7 @@ angular.module('txsplain', [])
               renderNumber(changePays) +
               '</b><br/> from <b>' + renderNumber(prevPays) +
               '</b> to <b>' + renderNumber(finalPays) +
-              '</b> ' + paysCurrency +
+              '</b> ' + translateCoin(paysCurrency) +
               (paysIssuer ? '.<account>' + paysIssuer + '</account>' : '') +
               '</li>'
           }
@@ -273,7 +273,7 @@ angular.module('txsplain', [])
               renderNumber(changeGets) +
               '</b><br/> from <b>' + renderNumber(prevGets) +
               '</b> to <b>' + renderNumber(finalGets) +
-              '</b> ' + getsCurrency +
+              '</b> ' + translateCoin(getsCurrency) +
               (getsIssuer ? '.<account>' + getsIssuer + '</account>' : '') +
               '</li>'
           }
@@ -354,7 +354,7 @@ angular.module('txsplain', [])
                 renderNumber((finalBalance - previousBalance) / 1000000) +
                 '</b> from <b>' + renderNumber(previousBalance / 1000000) +
                 '</b> to <b>' + renderNumber(finalBalance / 1000000) +
-                '</b> XRP </li>'
+                '</b> ' + translateCoin('XRP') + ' </li>'
             } else if (previousBalance > finalBalance) {
               html += '<li>Balance reduced by <b>' +
                 renderNumber((previousBalance - finalBalance) / 1000000) +
@@ -506,7 +506,7 @@ angular.module('txsplain', [])
         // renderTrustSet
         function renderTrustSet() {
           return 'It establishes <b>' + renderNumber(tx.tx.LimitAmount.value) +
-            '</b> as the maximum amount of ' + tx.tx.LimitAmount.currency +
+            '</b> as the maximum amount of ' + translateCoin(tx.tx.LimitAmount.currency) +
             ' from <account>' + tx.tx.LimitAmount.issuer + '</account>' +
             ' that <account>' + tx.tx.Account +
             '</account> is willing to hold.'
@@ -569,7 +569,7 @@ angular.module('txsplain', [])
             ' in order to receive ' +
             '<amount>' + displayAmount(tx.tx.TakerPays) + '</amount> ' +
             '<br/>The exchange rate for this offer is <amount><b>' +
-            renderNumber(rate.toPrecision(5)) + ' ' + pair.replace(/XRP/gi, native_currency) + '</b></amount>.'
+            renderNumber(rate.toPrecision(5)) + ' ' + translateCoin(pair) + '</b></amount>.'
 
           if (tx.tx.OfferSequence) {
             html += '<br/>The transaction will also cancel ' +

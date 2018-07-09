@@ -5,6 +5,30 @@ function ApiHandler(baseURL) {
   var self = this
   var timeFormat = 'YYYY-MM-DDTHH:mm:ss'
 
+  var native_currency = 'ZVI';
+  var native_currency_name = 'Zvi';
+  function translateBack(coin) {
+      switch(coin) {
+          case native_currency:
+          case native_currency_name:
+              return 'XRP';
+          case 'XSDR':
+              return 'XSD';
+          case native_currency + ' - ' + native_currency + 's':
+              return 'XRP - Ripples';
+          default:
+              if(coin && typeof coin === 'string'){
+                  if(coin.indexOf(native_currency) !== -1){
+                      coin = coin.replace(/native_currency/g, 'XRP')
+                  }
+                  if(coin.indexOf('XSDR') !== -1){
+                      coin = coin.replace(/XSDR/g, 'XSD')
+                  }
+              }
+              return coin;
+      }
+  }
+
   self.url = baseURL
 
   /**

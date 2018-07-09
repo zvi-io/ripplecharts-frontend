@@ -1,6 +1,7 @@
 angular.module( 'ripplecharts.activeAccounts', [
   'ui.state',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'ripplecharts.translate'
 ])
 
 .config(function config( $stateProvider ) {
@@ -21,7 +22,7 @@ angular.module( 'ripplecharts.activeAccounts', [
   });
 })
 
-.controller( 'ActiveAccountsCtrl', function ActiveAccountsCtrl( $scope, gateways ) {
+.controller( 'ActiveAccountsCtrl', function ActiveAccountsCtrl( $scope, gateways, translateCoin, translateBack ) {
 
   var base    = store.session.get('traderBase')    || store.get('traderBase')    || {"currency": "BTC", "issuer" : "rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8"};
   var counter = store.session.get('traderCounter') || store.get('traderCounter') || {"currency": "XRP"};
@@ -39,12 +40,12 @@ angular.module( 'ripplecharts.activeAccounts', [
 //set up the currency pair dropdowns
   var loaded  = false;
   $scope.$watch('theme', function(){
-    dropdownB = ripple.currencyDropdown(gateways).selected(counter)
+    dropdownB = ripple.currencyDropdown(translateCoin, translateBack, gateways).selected(counter)
       .on("change", function(d) {
         counter = d;
         loadPair();
       });
-    dropdownA = ripple.currencyDropdown(gateways).selected(base)
+    dropdownA = ripple.currencyDropdown(translateCoin, translateBack, gateways).selected(base)
       .on("change", function(d) {
         base = d;
         loadPair();

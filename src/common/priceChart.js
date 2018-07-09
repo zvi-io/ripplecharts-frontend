@@ -11,6 +11,8 @@ if (!LOADER_PNG) {
 }
 
 function PriceChart(options) {
+  var translateCoin = options.translateCoin;
+  var translateBack = options.translateBack;
   var self = this
   var xScale = d3.time.scale()
   var priceScale = d3.scale.linear()

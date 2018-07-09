@@ -2,7 +2,8 @@
 'use strict'
 
 angular.module('ripplecharts.landing', [
-    'ui.state'
+    'ui.state',
+    'ripplecharts.translate'
 ])
     .filter('trust', ['$sce', function ($sce) {
         return function (htmlCode) {
@@ -26,8 +27,7 @@ angular.module('ripplecharts.landing', [
             }
         })
     })
-    .controller('LandingCtrl', function LandingCtrl($scope, $state, gateways) {
-
+    .controller('LandingCtrl', function LandingCtrl($scope, $state, gateways, translateCoin, translateBack) {
         var api = new ApiHandler(API)
         var donut = new ValueSummary({
             id: 'metricDetail',
@@ -39,7 +39,7 @@ angular.module('ripplecharts.landing', [
         var rateInterval;
 
         var valueCurrencies = {
-            XSD: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8',  // bitstamp
+            XSDR: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8',  // bitstamp
             BTC: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8', // gatehub
             EMN: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8', // tokoyo jpy
             BCH: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8', // ripplefox
@@ -74,13 +74,6 @@ angular.module('ripplecharts.landing', [
 
         // TODO: this needs to 4 letter currency support
         $scope.currencies = Object.keys(valueCurrencies)
-        // Replace XRP with native currency
-        var index = $scope.currencies.indexOf("XRP");
-        if (index !== -1) {
-            $scope.currencies[index] = native_currency;
-        }
-
-        $scope.selectedCurrency = 'XSD';
 
 
         $scope.showMetricDetails = function (name) {
@@ -110,7 +103,7 @@ angular.module('ripplecharts.landing', [
                                 currency: 'XRP'
                             },
                             counter: {
-                                currency: c.currency,
+                                currency: translateBack(c.currency),
                                 issuer: c.issuer
                             },
                             period: live ? '' : 'day',
@@ -150,13 +143,16 @@ angular.module('ripplecharts.landing', [
         // API if its not cached or
         // if we are updating the cache
         function setValueRates(currency, useCached, callback) {
+            
             var issuer = valueCurrencies[currency];
             $scope.valueRate = undefined;
             $scope.valueRatePair = '';
-
+            
             function apply() {
                 $scope.valueRate = exchangeRates[currency + '.' + issuer];
-                $scope.valueRatePair =  translateCoin('XRP') + '/' + currency;
+                
+                $scope.valueRatePair =  translateCoin('XRP') + '/' + translateCoin(currency);
+                
                 callback();
             }
 
@@ -165,9 +161,11 @@ angular.module('ripplecharts.landing', [
                     live: 1,
                     period: 1
                 };
-
+                
                 $scope.valueRatePair = '';
+                
                 callback();
+                
                 return;
 
                 // check for cached
@@ -202,11 +200,13 @@ angular.module('ripplecharts.landing', [
             }
 
             if (!$scope.valueRate) {
+                
                 return
             }
 
             var rate = $scope.metrics[metric].live ?
                 $scope.valueRate.live : $scope.valueRate.period
+            
 
             if ($scope.metrics[metric].total && rate) {
                 $scope.metrics[metric].converted =
@@ -466,7 +466,9 @@ angular.module('ripplecharts.landing', [
             fixed: true,
             clickable: true,
             updateInterval: 60,
-            gateways: gateways
+            gateways: gateways,
+            translateCoin: translateCoin,
+            translateBack: translateBack
         })
 
         markets.list(store.get('multimarkets'))
