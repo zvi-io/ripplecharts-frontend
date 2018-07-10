@@ -16,7 +16,8 @@ module.exports = {
       'vendor/moment/moment.js',
       'vendor/lodash/lodash.js',
       'vendor/d3/d3.js',
-      'deps/ripple.js'
+      'deps/ripple.js',
+      'src/config.js'
     ],
 
     icons: [

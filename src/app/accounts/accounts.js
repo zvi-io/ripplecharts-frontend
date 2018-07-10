@@ -16,7 +16,7 @@ angular.module( 'ripplecharts.accounts', [
   });
 })
 
-.controller( 'AccountsCtrl', function AccountsCtrl( $scope ) {
+.controller( 'AccountsCtrl', function AccountsCtrl($scope) {
 
   accounts = new TotalAccounts({
     url    : API,

@@ -12,7 +12,8 @@ module.exports = {
       'vendor/lodash/lodash.js',
       'vendor/d3/d3.js',
       'deps/ripple.js',
-      'vendor/moment/moment.js'
+      'vendor/moment/moment.js',
+      'src/config.js'
     ],
 
     js: [

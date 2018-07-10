@@ -16,7 +16,7 @@ angular.module( 'ripplecharts.validators', [
   });
 })
 
-.controller( 'ValidatorsCtrl', function ValidatorsCtrl( $scope ) {
+.controller( 'ValidatorsCtrl', function ValidatorsCtrl( $scope) {
 
   var apiHandler = new ApiHandler(API);
 

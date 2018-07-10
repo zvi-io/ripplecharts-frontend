@@ -1,6 +1,7 @@
 angular.module( 'ripplecharts.manage-currencies', [
   'ui.state',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'ripplecharts.translate'
 ])
 
 .config(function config( $stateProvider ) {
@@ -21,7 +22,7 @@ angular.module( 'ripplecharts.manage-currencies', [
   });
 })
 
-.controller( 'ManageCurrenciesCtrl', function ManageCurrenciesCtrl( $scope, gateways) {
+.controller( 'ManageCurrenciesCtrl', function ManageCurrenciesCtrl( $scope, gateways, translateCoin, translateBack) {
   var currencyWrapper, name;
   var currencies = gateways.getCurrencies('all');
   var curr_col1  = d3.select('#curr_list .first_column');
@@ -59,7 +60,7 @@ angular.module( 'ripplecharts.manage-currencies', [
 
     if (!currency.custom)
       currencyWrapper.append('img').attr('class', 'curr_symb').attr('src', currency.icon);
-    currencyWrapper.append('text').text(currency.currency);
+      currencyWrapper.append('text').text(translateCoin(currency.currency));
     if (currency.custom)
       currencyWrapper.append('a').attr('class', 'removeBtn').text('remove')
         .on('click', function() {

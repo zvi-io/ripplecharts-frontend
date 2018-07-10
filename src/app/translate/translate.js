@@ -1,53 +1,17 @@
 angular.module('ripplecharts.translate', [
     'ui.state'
 ])
-.value('native_currency', 'ZVI')
-.value('native_currency_name', 'Zvi')
+.factory('native_currency', function() {
+    return  Options.native_currency
+})
+.factory('native_currency_name', function() {
+    return  Options.native_currency_name
+})
 .factory('translateCoin', function(native_currency, native_currency_name) {
-    return  function (coin) {
-        switch(coin) {
-            case 'XRP':
-            case 'ripple':
-                return native_currency;
-            case 'XSD':
-                return 'XSDR';
-            case 'XRP - Ripples':
-                return native_currency + " - " + native_currency + "s";
-            default:
-                if(coin && typeof coin === 'string'){
-                    if(coin.indexOf('XRP') !== -1){
-                        coin = coin.replace(/XRP/g, native_currency)
-                    }
-                    if(coin.indexOf('XSDR') === -1 && coin.indexOf('XSD') !== -1){
-                        coin = coin.replace(/XSD/g, 'XSDR')
-                    }
-                }
-                return coin;
-        }
-    };
+    return  Options.translateCoin
 })
 .factory('translateBack', function(native_currency, native_currency_name) {
-    return  function (coin) {
-        switch(coin) {
-            case native_currency:
-            case native_currency_name:
-                return 'XRP';
-            case 'XSDR':
-                return 'XSD';
-            case native_currency + ' - ' + native_currency + 's':
-                return 'XRP - Ripples';
-            default:
-                if(coin && typeof coin === 'string'){
-                    if(coin.indexOf(native_currency) !== -1){
-                        coin = coin.replace(/native_currency/g, 'XRP')
-                    }
-                    if(coin.indexOf('XSDR') !== -1){
-                        coin = coin.replace(/XSDR/g, 'XSD')
-                    }
-                }
-                return coin;
-        }
-    };
+    return  Options.translateBack
 })
 .filter('translateCoinsFilter', function (translateCoin) {
     return function (coins) {

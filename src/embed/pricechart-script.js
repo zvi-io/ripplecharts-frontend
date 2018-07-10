@@ -29,6 +29,13 @@
 remote = new ripple.RippleAPI({"server":"ws://s-east.zvi.io:7007"});
 
 var PriceChartWidget = function (options) {
+  // Get reference to translate functions in embed mode
+  var native_currency = Options.native_currency;
+  var native_currency_name = Options.native_currency_name;
+  var translateCoin = Options.translateCoin;
+  var translateBack = Options.translateBack;
+
+
   var self = this, div, el, theme;
 
   if (!options) options = {};

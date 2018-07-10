@@ -215,52 +215,52 @@ angular.module('ripplecharts.xrp-markets', [
     })
 
     // get external exchanges
-    api.getExternalMarkets({
-      period: $scope.selectedPeriod
-    }, function(err, resp) {
-      var list = {}
-
-      if (err || !resp) {
-        console.log(err)
-
-      } else {
-
-        resp.components.forEach(function(c) {
-          var amount = Number(c.base_volume)
-
-          if (!amount) {
-            delete markets[c.source]
-            return
-          }
-
-          if (!list[c.source]) {
-            list[c.source] = {
-              total: 0,
-              count: 0,
-              components: []
-            }
-          }
-
-          list[c.source].total += amount
-          list[c.source].count += c.count || 0
-
-          list[c.source].components.push({
-            key: 'XRP/' + c.counter_currency,
-            value: amount,
-            amount: amount,
-            counter_currency: c.counter_currency,
-            count: c.count
-          })
-
-        })
-
-        for (var key in list) {
-          markets[key] = list[key]
-        }
-
-        updateTotals(true)
-      }
-    })
+    // api.getExternalMarkets({
+    //   period: $scope.selectedPeriod
+    // }, function(err, resp) {
+    //   var list = {}
+    //
+    //   if (err || !resp) {
+    //     console.log(err)
+    //
+    //   } else {
+    //
+    //     resp.components.forEach(function(c) {
+    //       var amount = Number(c.base_volume)
+    //
+    //       if (!amount) {
+    //         delete markets[c.source]
+    //         return
+    //       }
+    //
+    //       if (!list[c.source]) {
+    //         list[c.source] = {
+    //           total: 0,
+    //           count: 0,
+    //           components: []
+    //         }
+    //       }
+    //
+    //       list[c.source].total += amount
+    //       list[c.source].count += c.count || 0
+    //
+    //       list[c.source].components.push({
+    //         key: 'XRP/' + c.counter_currency,
+    //         value: amount,
+    //         amount: amount,
+    //         counter_currency: c.counter_currency,
+    //         count: c.count
+    //       })
+    //
+    //     })
+    //
+    //     for (var key in list) {
+    //       markets[key] = list[key]
+    //     }
+    //
+    //     updateTotals(true)
+    //   }
+    // })
   }
 
 

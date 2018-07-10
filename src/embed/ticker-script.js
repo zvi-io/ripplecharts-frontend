@@ -7,6 +7,13 @@
 /* global ripple, OffersExercisedListener, ApiHandler */
 'use strict';
 
+// Get reference to translate functions in embed mode
+var native_currency = Options.native_currency;
+var native_currency_name = Options.native_currency_name;
+var translateCoin = Options.translateCoin;
+var translateBack = Options.translateBack;
+
+
 var default_markets = [
   {
     counter: {currency: 'BTC', issuer: 'rMJSrGBUCTYnJN9kPNdgEm2hAfuC6bfPi8'},
@@ -72,7 +79,7 @@ var BLANK_PNG = 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=';
 //  server: 'wss://s1.ripple.com:443'
 //});
 var remote = new ripple.RippleAPI({
-  server: 'ws://s-east.zvi.io:7007'
+  server: 'wss://s-east.zvi.io:443'
 });
 remote.connect()
 .then(function() {
@@ -322,11 +329,11 @@ function Ticker(base, counter, obj, callback) {
 
       self.div.append('div')
         .attr('class', 'baseCurrency')
-        .text(base.currency + '/');
+        .text(translateCoin(base.currency) + '/');
 
       self.div.append('div')
         .attr('class', 'counterCurrency')
-        .text(counter.currency);
+        .text(translateCoin(counter.currency));
 
       self.divPct = self.div.append('div')
         .attr('class', 'pct')

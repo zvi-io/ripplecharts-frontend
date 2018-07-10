@@ -353,70 +353,70 @@ angular.module('ripplecharts.landing', [
             })
 
             // get external exchanges
-            api.getExternalMarkets({}, function (err, resp) {
-                var total = 0
-                var components = {}
-                var xrpVolume
-
-                if (err || !resp) {
-                    console.log(err)
-                    return
-                }
-
-                resp.components.forEach(function (c) {
-                    var amount = Number(c.base_volume)
-
-                    if (!amount) {
-                        return
-                    }
-
-                    if (!components[c.source]) {
-                        components[c.source] = {
-                            source: c.source,
-                            base_volume: 0,
-                            count: 0,
-                            components: []
-                        }
-                    }
-
-                    components[c.source].base_volume += amount
-                    components[c.source].count += c.count || 0
-
-                    components[c.source].components.push({
-                        key: 'XRP/' + c.counter_currency,
-                        value: amount,
-                        amount: amount,
-                        counter_currency: c.counter_currency,
-                        count: c.count
-                    })
-                })
-
-                $scope.metrics.totalTradeVolume.withRCL = false
-                $scope.metrics.totalTradeVolume.components = []
-                Object.keys(components).map(function (c) {
-                    $scope.metrics.totalTradeVolume.components.push(components[c])
-                    total += components[c].base_volume
-                })
-
-                // add RCL XRP volume
-                if ($scope.metrics.tradeVolumeRCL.components) {
-                    xrpVolume = filterXRPVolume($scope.metrics.tradeVolumeRCL.components)
-                    $scope.metrics.totalTradeVolume.components.unshift(xrpVolume)
-                    total += xrpVolume.base_volume
-                    $scope.metrics.totalTradeVolume.withRCL = true
-                }
-
-                // sort by volume
-                $scope.metrics.totalTradeVolume.components.sort(function (a, b) {
-                    return b.base_volume - a.base_volume
-                })
-
-                setMetricValue('totalTradeVolume', total)
-                if ($scope.selectedMetric === $scope.metrics.totalTradeVolume) {
-                    $scope.showMetricDetails()
-                }
-                $scope.$apply()
-            })
+            // api.getExternalMarkets({}, function (err, resp) {
+            //     var total = 0
+            //     var components = {}
+            //     var xrpVolume
+            //
+            //     if (err || !resp) {
+            //         console.log(err)
+            //         return
+            //     }
+            //
+            //     resp.components.forEach(function (c) {
+            //         var amount = Number(c.base_volume)
+            //
+            //         if (!amount) {
+            //             return
+            //         }
+            //
+            //         if (!components[c.source]) {
+            //             components[c.source] = {
+            //                 source: c.source,
+            //                 base_volume: 0,
+            //                 count: 0,
+            //                 components: []
+            //             }
+            //         }
+            //
+            //         components[c.source].base_volume += amount
+            //         components[c.source].count += c.count || 0
+            //
+            //         components[c.source].components.push({
+            //             key: 'XRP/' + c.counter_currency,
+            //             value: amount,
+            //             amount: amount,
+            //             counter_currency: c.counter_currency,
+            //             count: c.count
+            //         })
+            //     })
+            //
+            //     $scope.metrics.totalTradeVolume.withRCL = false
+            //     $scope.metrics.totalTradeVolume.components = []
+            //     Object.keys(components).map(function (c) {
+            //         $scope.metrics.totalTradeVolume.components.push(components[c])
+            //         total += components[c].base_volume
+            //     })
+            //
+            //     // add RCL XRP volume
+            //     if ($scope.metrics.tradeVolumeRCL.components) {
+            //         xrpVolume = filterXRPVolume($scope.metrics.tradeVolumeRCL.components)
+            //         $scope.metrics.totalTradeVolume.components.unshift(xrpVolume)
+            //         total += xrpVolume.base_volume
+            //         $scope.metrics.totalTradeVolume.withRCL = true
+            //     }
+            //
+            //     // sort by volume
+            //     $scope.metrics.totalTradeVolume.components.sort(function (a, b) {
+            //         return b.base_volume - a.base_volume
+            //     })
+            //
+            //     setMetricValue('totalTradeVolume', total)
+            //     if ($scope.selectedMetric === $scope.metrics.totalTradeVolume) {
+            //         $scope.showMetricDetails()
+            //     }
+            //     $scope.$apply()
+            // })
         }
 
         $scope.$watch('selectedCurrency', function (d) {

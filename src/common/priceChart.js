@@ -13,6 +13,14 @@ if (!LOADER_PNG) {
 function PriceChart(options) {
   var translateCoin = options.translateCoin;
   var translateBack = options.translateBack;
+  // Check for embed usage - get reference to translate functions
+  if(!translateCoin || ! translateBack){
+    var native_currency = Options.native_currency;
+    var native_currency_name = Options.native_currency_name;
+    var translateCoin = Options.translateCoin;
+    var translateBack = Options.translateBack;
+  }
+
   var self = this
   var xScale = d3.time.scale()
   var priceScale = d3.scale.linear()
