@@ -39,8 +39,8 @@ Options = {
 
   ripple: {
 //    "server": "wss://s1.ripple.com:443"
-//    "server": "wss://s-west.zvi.io:7107",
-    "server": "wss://s-east.zvi.io:7107"
+//    "server": "wss://s-west.zvi.io:443",
+    "server": "wss://s-east.zvi.io:443"
   },
   domain: 'zvi.io',
   native_currency: 'ZVI',
