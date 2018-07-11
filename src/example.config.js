@@ -42,6 +42,7 @@ Options = {
 //    "server": "wss://s-west.zvi.io:7107",
     "server": "wss://s-east.zvi.io:7107"
   },
+  domain: 'zvi.io',
   native_currency: 'ZVI',
   native_currency_name: 'Zvi',
   conversions: [

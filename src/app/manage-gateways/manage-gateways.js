@@ -23,6 +23,8 @@ angular.module( 'ripplecharts.manage-gateways', [
 
 .controller( 'ManageGatewaysCtrl', function ManageGatewaysCtrl( $scope, $state, $location, gateways ) {
   var addButton, addBox, newGateway, description, response;
+  // Add domain name from config to scope
+  $scope.domain = Options.domain;
 
   //load settings from session, local storage, options, or defaults
   $scope.base  = store.session.get('base') || store.get('base') ||
