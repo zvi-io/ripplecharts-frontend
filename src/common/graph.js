@@ -732,7 +732,7 @@ networkGraph = function (nameService, translateCoin, translateBack) {
     var amount = tx.meta.DeliveredAmount || tx.tx.Amount;
     if (amount) {
       var span = $("<span class='amount'/>");
-      span.html(amount.currency ? commas(amount.value)+" "+amount.currency : commas(amount/1000000)+" XRP");
+      span.html(amount.currency ? commas(amount.value)+" "+ translateCoin(amount.currency) : commas(amount/1000000)+" " + translateCoin("XRP"));
 
       div.append("<b>Amount:</b>")
         .append(span)
@@ -777,7 +777,7 @@ networkGraph = function (nameService, translateCoin, translateBack) {
     });
 
     div.append((tx.meta ? "<b>Result:</b> "+(tx.meta.TransactionResult=="tesSUCCESS"?"<span>":"<span style='color:#900;'>")+tx.meta.TransactionResult+"</span><br/>" : "")+
-      (xrpExpense||xrpExpense===0 ? "<b>XRP change:</b> "+commas(xrpExpense.before) + " XRP &rarr; "+commas(xrpExpense.after)+" XRP ("+(xrpExpense.after>=xrpExpense.before?"+":"&ndash;")+commas(Math.round(1000000*Math.abs(xrpExpense.before-xrpExpense.after))/1000000)+" XRP)<br/>" : "")+
+      (xrpExpense||xrpExpense===0 ? "<b>" + translateCoin('XRP') + " change:</b> "+commas(xrpExpense.before) + " " + translateCoin('XRP') + " &rarr; "+commas(xrpExpense.after)+" " + translateCoin('XRP') + " ("+(xrpExpense.after>=xrpExpense.before?"+":"&ndash;")+commas(Math.round(1000000*Math.abs(xrpExpense.before-xrpExpense.after))/1000000)+" " + translateCoin('XRP') + ")<br/>" : "")+
       "<b>Date:</b> "+moment(tx.date).format('lll')+"<br/>"+
       (tx.tx.InvoiceID ? "<b>Invoice ID:</b> <tt>"+tx.tx.InvoiceID+"</tt><br/>" : "")+
       (tx.tx.DestinationTag ? "<b>Destination tag:</b> "+tx.tx.DestinationTag+"<br/>" : "")+
